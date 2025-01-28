@@ -3,8 +3,8 @@ const os = require("os");
 const { runtime } = require('../lib/functions');
 
 cmd({
-    pattern: "alive",
-    alias: ["status", "runtime", "uptime"],
+    pattern: "panhwar",
+    alias: ["panhwar", "panhwarmd", "panhwartime"],
     desc: "Check uptime and system status",
     category: "main",
     react: "📟",
@@ -13,16 +13,36 @@ cmd({
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         // Generate system status message
-        const status = `╭━━〔 *PANHWAR-MD* 〕━━┈⊷
-┃◈╭─────────────·๏
-┃◈┃• *⏳Uptime*:  ${runtime(process.uptime())} 
-┃◈┃• *📟 Ram usage*: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB
-┃◈┃• *⚙️ HostName*: ${os.hostname()}
-┃◈┃• *👨‍💻 Owner*: ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ
-┃◈┃• *🧬 Version*: 2.0.0
-┃◈└───────────┈⊷
-╰──────────────┈⊷
-> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ`;
+        const status = `╺╺╺⟢ ᴘᴀɴʜᴡᴀʀ  ⟣╺╺╺
+
+━━━━━━━━━━━━━━━━━━━
+ ᴏᴜʀ ᴄʜᴀɴɴᴇʟ:
+ https://whatsapp.com/channel/0029ValASu1IN9ifummBKW1U
+
+━━━━━━━━━━━━━━━━━━━
+ ғᴏʟʟᴏᴡ ᴜs 
+
+ https://github.com/Panhwar110
+━━━━━━━━━━━━━━━━━━━
+ ʙᴏᴛ ʀᴇᴘᴏs 
+
+ ⚡ᴘᴀɴʜᴡᴀʀ⚡
+https://github.com/Panhwar110/Panhwar-MD
+
+⚡ғʀᴇᴇ ᴅᴇᴘʟᴏʏ ᴏᴘᴛɪᴏɴs⚡
+1. https://talkdrove.com/auth/signup?ref=2E22E5E8
+2. Aʟʟʟ ᴏᴛʜᴇʀs
+
+━━━━━━━━━━━━━━━━━━━
+ ᴍʏ ᴡᴇʙsɪᴛᴇ 
+
+ https://powered-by-ansar-664f9fe56b2d.herokuapp.com/
+
+━━━━━━━━━━━━━━━━━━━
+
+> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ
+
+▢━━━━━━━━━━━━━━━━━━▢`;
 
         // Send the status message with an image
         await conn.sendMessage(from, { 

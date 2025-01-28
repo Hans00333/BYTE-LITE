@@ -1,112 +1,110 @@
 {
-  "name": "BYTE-MD-LITE",
-  "description": "A lite version of BYTE-MD for TalkDrove Followers",
-  "keywords": ["bot", "node", "baileys", "whatsapp"],
-  "logo": "https://raw.githubusercontent.com/HyHamza/HyHamza/main/Images/BYTE-MD-LITE.jpeg",
-  "repository": "https://github.com/HyHamza/BYTE-MD-LITE/",
-  "succes_url": "/",
-  "stack": "container",
+  "name": "BYTE-LITE",
+  "description": "ᴊᴀᴠᴀsᴄʀɪᴘᴛ ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ᴄʀᴇᴀᴛᴇᴅ ʙʏ ᴘᴀɴʜᴡᴀʀ ᴍᴅ",
+  "logo": "https://i.imgur.com/UfzyhWN.jpeg",
+  "keywords": ["bot"],
+  "success_url": "/",
+
+    "stack": "container",
   "env": {
-    "PREFIX": {
-      "description": "choose your prefix of bot",
-      "value": ".",
-      "required": true
-    },
-    "AUTO_READ_STATUS": {
-      "description": "Your contact status will be read automatically(type yes to active or no to deactive ; don't write in capital letter)",
-      "value": "no",
-      "required": false
-    },
-    "AUTO_DOWNLOAD_STATUS": {
-      "description": "Your contact status will be download automatically and send to you(type yes to active or no to deactive ; don't write in capital letter)",
-      "value": "no",
-      "required": false
-    },
-    "PM_PERMIT": {
-      "description": "Other user can't use your bot in pm (type yes to active or no to deactive ; don't write in capital letter)",
-      "value": "no",
-      "required": false
-    },
-    "BOT_NAME": {
-      "description": "put A name for your bot",
-      "value": "BYTE-V.lite",
-      "required": false
-    },
-    "BOT_MENU_LINKS": {
-      "description": "add one or many link for your bot menu ; eg: url1,url2,url3.....",
-      "value": "https://raw.githubusercontent.com/HyHamza/HyHamza/main/Images/BYTE-MD-LITE.jpeg",
-      "required": false
-    },
-    "PUBLIC_MODE": {
-      "description": "type yes to put your bot on public mode or no to put it on private mod",
-      "value": "yes",
-      "required": false
-    },
-    "HEROKU_API_KEY": {
-      "description": "insert your heroku api-key",
-      "value": "",
-      "required": false
-    },
-    "HEROKU_APP_NAME": {
-      "description": "insert your heroku APP NAME (the name you wrote at the beginning)",
-      "value": "",
-      "required": false
-    },
     "SESSION_ID": {
-      "description": "put your session ID, the code you received after pairing code make sure starts with Byt;;;",
-      "value": "",
-      "required": true
-    },
-    "OWNER_NAME": {
-      "desc": "Your Name",
-      "required": false,
-      "value": "TalkDrove"
-    },
-    "CHAT_BOT": {
-      "desc": "Put on to allow the bot to chat with people who text you or put off if you don't want the bot to chat with people",
-      "required": false,
-      "value": "off"
-    },
-    "OWNER_NUMBER": {
-      "desc": "Your number, don't put '+' and put your area code (e.g., '92')",
+      "description": "Put the session-id here.",
       "required": true,
-      "value": "923458017380"
-    },
-    "WARN_COUNT": {
-      "desc": "this is the limit of warn for warning commands",
-      "required": false,
-      "value": "3"
-    },
-    "STARTING_BOT_MESSAGE": {
-      "description": "if you don't want starting-bot-message put no else put yes",
+      "value": ""
+    },  
+   
+    "PREFIX": {
+      "description": "paste your bot prefix note! Don't apply null prefix.",
       "required": true,
-      "value": "yes"
+      "value": "."
     },
-    "AUTO_REACTION": {
-      "description": "Put on if you want the bot to react to people's messages. It won't react to your messages and those from creator Hamza.",
-      "value": "off",
-      "required": false
+    
+    "MODE": {
+      "description": "select your bot work type public-private-inbox-group.",
+      "required": true,
+      "value": "public"
+    }, 
+    
+    "AUTO_TYPING": {
+      "description": "Make it true if you want auto typing.",
+      "required": false,
+      "value": "true"
     },
-    "PRESENCE": {
-      "description": "Mark your presence: 1 to indicate that you are online even if you are not. 2 to indicate that you are currently typing a message. 3 to indicate that you are currently recording an audio. Or leave the field blank to indicate your real state.",
-      "value": "1",
-      "required": false
+
+    "AUTO_READ_STATUS": {
+      "description": "Make it true if you want bot auto auto_read_status.",
+      "required": true,
+      "value": "true"
+    }, 
+
+    "ANTI_LINK": {
+      "description": "Make it true if you want bot auto remove group link.",
+      "required": true,
+      "value": "true"
     },
-    "ANTI_DELETE_MESSAGE": {
-      "description": "if you want to enable anti delete message put yes else put no",
-      "value": "yes",
-      "required": false
+
+    "ANTI_BAD": {
+      "description": "Make it true if you want bot auto delete bad words from group example xxx porn etc.",
+      "required": true,
+      "value": "true"
+    }, 
+
+   "CURRENT_STATUS": {
+      "description": "Make it true if want automatic voice reply .",
+      "required": false,
+      "value": "false"
+    }, 
+
+    "FAKE_RECORDING": {
+      "description": "Make it true if you want bot fake record.",
+      "required": true,
+      "value": "false"
+    },
+
+    "AUTO_REACT": {
+      "description": "Make it true if you want bot AutoReact.",
+      "required": true,
+      "value": "true"
+    },
+
+    "OWNER_REACT": {
+      "description": "Make it true if you want bot OwnerReact.",
+      "required": true,
+      "value": "true"
+    
+    }, 
+
+   "ALWAYS_ONLINE": {
+      "description": "Make it true if want automatic voice reply .",
+      "required": false,
+      "value": "true"
+    }, 
+
+    "BOT_NAME": {
+      "description": "write hear your name.",
+      "required": true,
+      "value": "ᴘᴀɴʜᴡᴀʀ ᴍᴅ"
+    }, 
+
+    "READ_MESSAGE": {
+      "description": "Make it true if you want bot read your all sms just now.",
+      "required": true,
+      "value": "false"
+    }, 
+    
+    "CAPTION": {
+      "description": "enter your caption if you want to show on menu.",
+      "required": true,
+      "value": "*ᴘᴏᴡᴅᴇʀᴇᴅ ʙʏ ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ*"
     }
-  },
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "basic"
-    }
-  },
-  "addons": [
-    {
-      "plan": "heroku-postgresql"
-    }
-  ]
+
+
+},
+
+     "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+        }
+     ],
+  "stack": "heroku-24"
 }

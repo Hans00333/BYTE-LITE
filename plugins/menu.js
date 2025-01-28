@@ -1,452 +1,588 @@
-//TalkDrove
+const config = require('../config');
+const { cmd, commands } = require('../command');
+const os = require("os");
+const { runtime } = require('../lib/functions');
+const axios = require('axios');
+
+cmd({
+    pattern: "menu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "⚡",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━━〔 *${config.BOT_NAME}* 〕━━━┈⊷
+┃★╭──────────────
+┃★│ Owner : *${config.BOT_NAME}*
+┃★│ Baileys : *Multi Device*
+┃★│ Type : *NodeJs*
+┃★│ Platform : *Heroku*
+┃★│ Mode : *[${config.MODE}]*
+┃★│ Prifix : *[${config.PREFIX}]*
+┃★│ Version : *v 2.0.0*
+┃★╰──────────────
+╰━━━━━━━━━━━━━━━┈⊷
+*╭━━〔 Menu List 〕━━┈⊷*
+*┃◈╭─────────────·๏*
+*┃◈┃• ❤️‍🔥aimenu❤️‍🔥*
+*┃◈┃• 🫀anmiemenu🫀*
+*┃◈┃• 👥convertmenu👥*
+*┃◈┃• 🤹🏻funmenu🤹🏻*
+*┃◈┃• 📸dlmenu📸*
+*┃◈┃• 👻listcmd👻*
+*┃◈┃• 🤌🏻mainmenu🤌🏻*
+*┃◈┃• 🧑🏻groupmenu🧒🏻*
+*┃◈┃• 👑allmenu👑*
+*┃◈┃• 💀ownermenu💀*
+*┃◈┃• 🌐othermenu🌐*
+*┃◈┃• ✅repo✅*
+*┃◈└───────────┈⊷*
+*╰──────────────┈⊷*
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+        // Send audio
+        await conn.sendMessage(from, {
+            audio: { url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/sigma.m4a' },
+            mimetype: 'audio/mp4',
+            ptt: true
+        }, { quoted: mek });
+        
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+
+// dlmenu
+
+cmd({
+    pattern: "dlmenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "⤵️",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━〔 *Download Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• facebook
+┃◈┃• mediafire
+┃◈┃• tiktok
+┃◈┃• twitter
+┃◈┃• Insta
+┃◈┃• apk
+┃◈┃• img
+┃◈┃• play
+┃◈┃• play2
+┃◈┃• audio
+┃◈┃• video
+┃◈┃• video2
+┃◈┃• ytmp3
+┃◈┃• ytmp4
+┃◈┃• song
+┃◈┃• darama
+┃◈┃• gdrive
+┃◈┃• smovie
+┃◈┃• baiscope 
+┃◈┃• ginisilia 
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+// group menu
+
+cmd({
+    pattern: "groupmenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "⤵️",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try
+       {
+        let dec = `╭━━〔 *Group Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• grouplink
+┃◈┃• add
+┃◈┃• remove
+┃◈┃• kick
+┃◈┃• promote 
+┃◈┃• demote
+┃◈┃• dismiss 
+┃◈┃• revoke
+┃◈┃• setgoodbye
+┃◈┃• setwelcome
+┃◈┃• delete 
+┃◈┃• getpic
+┃◈┃• ginfo
+┃◈┃• delete 
+┃◈┃• disappear on
+┃◈┃• disappear off
+┃◈┃• disappear 7D,24H
+┃◈┃• allreq
+┃◈┃• updategname
+┃◈┃• updategdesc
+┃◈┃• joinrequests
+┃◈┃• senddm
+┃◈┃• nikal
+┃◈┃• mute
+┃◈┃• unmute
+┃◈┃• lockgc
+┃◈┃• unlockgc
+┃◈┃• invite
+┃◈┃• tag
+┃◈┃• hidetag
+┃◈┃• tagall
+┃◈┃• tagadmins
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+// fun menu
+
+cmd({
+    pattern: "funmenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "😎",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+
+        let dec = `╭━━〔 *Fun Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• insult
+┃◈┃• hack
+┃◈┃• joke
+┃◈┃• heart 
+┃◈┃• happy 
+┃◈┃• sad
+┃◈┃• angry 
+┃◈┃• shy
+┃◈┃• kiss
+┃◈┃• moon
+┃◈┃• cunfuzed
+┃◈┃• hand
+┃◈┃• nikal
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+// other menu
+
+cmd({
+    pattern: "othermenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "🤖",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━〔 *Other Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• fact
+┃◈┃• font
+┃◈┃• define
+┃◈┃• news
+┃◈┃• movie
+┃◈┃• weather
+┃◈┃• srepo
+┃◈┃• insult
+┃◈┃• save
+┃◈┃• wikipedia
+┃◈┃• gpass
+┃◈┃• githubstalk
+┃◈┃• yts
+┃◈┃• ytv
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+// main menu
+
+cmd({
+    pattern: "mainmenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "🗿",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━〔 *Main Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• ping
+┃◈┃• alive
+┃◈┃• runtime
+┃◈┃• uptime 
+┃◈┃• repo
+┃◈┃• owner
+┃◈┃• menu
+┃◈┃• menu2
+┃◈┃• restart
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+// owner menu
+
+cmd({
+    pattern: "ownermenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "🔰",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━〔 *Owner Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• owner
+┃◈┃• menu
+┃◈┃• menu2
+┃◈┃• listcmd
+┃◈┃• allmenu
+┃◈┃• repo
+┃◈┃• block
+┃◈┃• unblock
+┃◈┃• fullpp
+┃◈┃• setpp
+┃◈┃• restart
+┃◈┃• shutdown
+┃◈┃• updatecmd
+┃◈┃• alive
+┃◈┃• ping 
+┃◈┃• gjid
+┃◈┃• jid
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+// convert menu
+
+cmd({
+    pattern: "convertmenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "🥀",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━〔 *Convert Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• sticker
+┃◈┃• sticker2
+┃◈┃• fancy
+┃◈┃• take
+┃◈┃• tomp3
+┃◈┃• tts
+┃◈┃• trt
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+
+// anmie menu 
+
+cmd({
+    pattern: "animemenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "🧚",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+          let dec = `╭━━〔 *Anime Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+
+┃◈┃• dog
+┃◈┃• king
+┃◈┃• animegirl
+┃◈┃• animegirl
+┃◈┃• animegirl1
+┃◈┃• animegirl2
+┃◈┃• animegirl3
+┃◈┃• animegirl4
+┃◈┃• animegirl5
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
+
+
+// ai menu 
+
+cmd({
+    pattern: "aimenu",
+    desc: "menu the bot",
+    category: "menu",
+    react: "🤖",
+    filename: __filename
+}, 
+async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
+    try {
+        let dec = `╭━━〔 *Ai Menu* 〕━━┈⊷
+┃◈╭─────────────·๏
+┃◈┃• ai
+┃◈┃• gpt
+┃◈┃• meta
+┃◈┃• blackbox
+┃◈┃• gpt4
+┃◈┃• bing
+┃◈┃• copilot
+┃◈└───────────┈⊷
+╰──────────────┈⊷
+> ${config.CAPTION}`;
+
+        await conn.sendMessage(
+            from,
+            {
+                image: { url: `https://i.imgur.com/UfzyhWN.jpeg` },
+                caption: dec,
+                contextInfo: {
+                    mentionedJid: [m.sender],
+                    forwardingScore: 999,
+                    isForwarded: true,
+                    forwardedNewsletterMessageInfo: {
+                        newsletterJid: '120363321103874131@newsletter',
+                        newsletterName: 'ᴀɴsᴀʀ-ᴘᴀɴʜᴡᴀʀ',
+                        serverMessageId: 143
+                    }
+                }
+            },
+            { quoted: mek }
+        );
+
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//TalkDrove
-const _0x34927e=_0x59ea;(function(_0x5689c3,_0x411580){const _0x17b255=_0x59ea,_0x2903d7=_0x5689c3();while(!![]){try{const _0x3439ee=-parseInt(_0x17b255(0x1bb))/0x1+-parseInt(_0x17b255(0x19d))/0x2+parseInt(_0x17b255(0x198))/0x3+-parseInt(_0x17b255(0x1a8))/0x4*(-parseInt(_0x17b255(0x1b1))/0x5)+parseInt(_0x17b255(0x1a3))/0x6*(parseInt(_0x17b255(0x1b0))/0x7)+parseInt(_0x17b255(0x1b8))/0x8+parseInt(_0x17b255(0x19f))/0x9;if(_0x3439ee===_0x411580)break;else _0x2903d7['push'](_0x2903d7['shift']());}catch(_0x7ba2d0){_0x2903d7['push'](_0x2903d7['shift']());}}}(_0x2d90,0x9ebda));function _0x59ea(_0x100f14,_0x33e466){const _0x2d9081=_0x2d90();return _0x59ea=function(_0x59eab4,_0x2d4049){_0x59eab4=_0x59eab4-0x197;let _0x23d322=_0x2d9081[_0x59eab4];return _0x23d322;},_0x59ea(_0x100f14,_0x33e466);}const util=require(_0x34927e(0x1a2)),fs=require(_0x34927e(0x1ba)),{Hamza}=require(__dirname+'/../TalkDrove/Hamza'),{format}=require(__dirname+'/../TalkDrove/mesfonctions'),os=require('os'),moment=require(_0x34927e(0x197)),s=require(__dirname+_0x34927e(0x1b4));Hamza({'nomCom':_0x34927e(0x19b),'categorie':_0x34927e(0x1ae)},async(_0x48d603,_0x4ee850,_0x3ea708)=>{const _0x4ed0f3=_0x34927e;let {ms:_0x170501,repondre:_0x568ebc,prefixe:_0xfe1133,nomAuteurMessage:_0x14e85c,mybotpic:_0x553074}=_0x3ea708,{cm:_0xd029dc}=require(__dirname+_0x4ed0f3(0x1bc));var _0x556c57={},_0x3a755b=_0x4ed0f3(0x1be);s[_0x4ed0f3(0x1bd)]['toLocaleLowerCase']()!='yes'&&(_0x3a755b=_0x4ed0f3(0x1a1));_0xd029dc['map'](async(_0x525567,_0x54da91)=>{const _0x51c4c6=_0x4ed0f3;if(!_0x556c57[_0x525567[_0x51c4c6(0x1a9)]])_0x556c57[_0x525567[_0x51c4c6(0x1a9)]]=[];_0x556c57[_0x525567[_0x51c4c6(0x1a9)]]['push'](_0x525567[_0x51c4c6(0x1c0)]);}),moment['tz']['setDefault']('Asia/Karachi');const _0x36227a=moment()[_0x4ed0f3(0x199)](_0x4ed0f3(0x1bf)),_0x1d33fd=moment()[_0x4ed0f3(0x199)](_0x4ed0f3(0x1a4));let _0x2313df=_0x4ed0f3(0x1ac)+s[_0x4ed0f3(0x19a)]+_0x4ed0f3(0x1aa)+s[_0x4ed0f3(0x1af)]+_0x4ed0f3(0x1ad)+_0x3a755b+'\x0a│﹄\x20*Commands*\x20:\x20'+_0xd029dc['length']+_0x4ed0f3(0x1a7)+format(os[_0x4ed0f3(0x19c)]()-os[_0x4ed0f3(0x1ab)]())+'/'+format(os[_0x4ed0f3(0x19c)]())+_0x4ed0f3(0x1b6),_0x7a5179=_0x4ed0f3(0x1b7);for(const _0x7b5d9 in _0x556c57){_0x7a5179+='*o:*\x20*'+_0x7b5d9+'*\x20*o:*';for(const _0x4bd5be of _0x556c57[_0x7b5d9]){_0x7a5179+=_0x4ed0f3(0x1b9)+s[_0x4ed0f3(0x19a)]+'\x20'+_0x4bd5be;}_0x7a5179+=_0x4ed0f3(0x1b3);}_0x7a5179+=_0x4ed0f3(0x1a5);var _0x2f3fd2=_0x553074();if(_0x2f3fd2[_0x4ed0f3(0x1b5)](/\.(mp4|gif)$/i))try{_0x4ee850['sendMessage'](_0x48d603,{'video':{'url':_0x2f3fd2},'caption':_0x2313df+_0x7a5179,'footer':'*Powered\x20by\x20TalkDrove*','gifPlayback':!![]},{'quoted':_0x170501});}catch(_0x28d32b){console['log'](_0x4ed0f3(0x1a6)+_0x28d32b),_0x568ebc(_0x4ed0f3(0x1a6)+_0x28d32b);}else{if(_0x2f3fd2[_0x4ed0f3(0x1b5)](/\.(jpeg|png|jpg)$/i))try{_0x4ee850[_0x4ed0f3(0x1a0)](_0x48d603,{'image':{'url':_0x2f3fd2},'caption':_0x2313df+_0x7a5179,'footer':_0x4ed0f3(0x19e)},{'quoted':_0x170501});}catch(_0x4001eb){console[_0x4ed0f3(0x1b2)]('Awhhhhh\x20Menu\x20Error\x20'+_0x4001eb),_0x568ebc(_0x4ed0f3(0x1a6)+_0x4001eb);}else _0x568ebc(_0x2313df+_0x7a5179);}});function _0x2d90(){const _0x337a9c=['sendMessage','private','util','165666CKYINs','DD/MM/YYYY','\x0a\x0a*——\x20Channel\x20link:\x20——*\x0a\x0ahttps://whatsapp.com/channel/0029VaNRcHSJP2199iMQ4W0l\x0a\x20\x20\x0a*——————————————————————————————*\x0a','Awhhhhh\x20Menu\x20Error\x20','\x20\x0a│﹄\x20*Ram*\x20:\x20','76riLAUW','categorie','\x0a│﹄\x20*Owner*\x20:\x20','freemem','\x0a╭────〖\x20*BYTE-LITE*\x20〗────╮\x0a│﹄\x20*Prefix*\x20:\x20','\x0a│﹄\x20*Mode*\x20:\x20','General','OWNER_NAME','231qDlozb','98065UMLWlw','log','\x0a*╰═════════════⊷*\x20\x0a','/../set','match','\x0a│﹄\x20*Developer*\x20:\x20𝐻𝒶𝓂𝓏𝒶\x0a│﹄\x20*Version*\x20:\x20v.lite\x0a╰─────{\x20*TalkDrove*\x20}─────o:\x20\x0a\x0a','\x20\x20\x0a\x0a*BYTE.V-lite\x20Commands\x20:*\x0a◇\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20◇\x0a','414880MmWKZg','\x0a\x20*|*\x20','fs-extra','767612HPjtwS','/../TalkDrove//Hamza','MODE','public','HH:mm:ss','nomCom','moment-timezone','1475520Eviivw','format','PREFIXE','menu','totalmem','1325796kSajPQ','*BYTE-MD*','2278818kVEhRM'];_0x2d90=function(){return _0x337a9c;};return _0x2d90();}

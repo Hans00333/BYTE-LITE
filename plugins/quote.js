@@ -1,49 +1,25 @@
-const { Hamza } = require('../TalkDrove/Hamza');
+const axios = require('axios');
+const { cmd } = require('../command');
 
-Hamza({ nomCom: 'quote', categorie: 'Fun' }, async (dest, zk, commandeOptions) => {
-  const { ms, repondre, verifGroupe, arg } = commandeOptions;
-  if (!verifGroupe) {
-    repondre('Reserved for group use only');
-    return;
-  }
-
-  if (!arg[0]) {
+cmd({
+    pattern: "quote",
+    desc: "Get a random inspiring quote.",
+    category: "fun",
+    react: "💬",
+    filename: __filename
+},
+async (conn, mek, m, { from, reply }) => {
     try {
-      fetch('https://animechan.xyz/api/random')
-        .then((response) => response.json())
-        .then(async (quote) => {
-          repondre(`╔══════════════════════════╗
-║   BYTE-MD              ║
-╚══════════════════════════╝
-
-🎬 Anime: ${quote.anime}
-👤 Character: ${quote.character}
-💬 Quote: ${quote.quote}
-
-Powered by *BYTE-MD*`);
-        });
+        const response = await axios.get('https://api.quotable.io/random');
+        const quote = response.data;
+        const message = `
+💬 "${quote.content}"
+- ${quote.author}
+*QUOTES BY PANHWAR MD*
+        `;
+        return reply(message);
     } catch (e) {
-      repondre('Error : ' + e.message);
+        console.error("Error fetching quote:", e);
+        reply("¢συℓ∂ ησт ƒєт¢н α qυσтє. ρℓєαѕє тяу αgαιη ℓαтєя.");
     }
-  } else {
-    const query = arg.join(' ');
-
-    try {
-      fetch('https://animechan.xyz/api/random/character?name=' + query)
-        .then((response) => response.json())
-        .then(async (quote) => {
-          repondre(`╔══════════════════════════╗
-║   BYTE-MD               ║
-╚══════════════════════════╝
-
-🎬 Anime: ${quote.anime}
-👤 Character: ${quote.character}
-💬 Quote: ${quote.quote}
-
-Powered by BYTE-MD`);
-        });
-    } catch (e) {
-      repondre('Error : ' + e.message);
-    }
-  }
 });
